@@ -2,6 +2,7 @@ package com.github.emilg1101.marketplace.controller;
 
 import com.github.emilg1101.marketplace.model.HomepageModel;
 import com.github.emilg1101.marketplace.model.ProductItemModel;
+import com.github.emilg1101.marketplace.model.ProductModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +30,12 @@ public class ProductsController {
         homepageModel.setProducts(productItemModelList);
         modelMap.addAttribute("model", homepageModel);
         return "index";
+    }
+
+    @GetMapping(path = "/product")
+    public String product(ModelMap modelMap) {
+        ProductModel productModel = new ProductModel(0L, "http://placehold.it/700x400", "title 1", "description 1", 99.99);
+        modelMap.addAttribute("model", productModel);
+        return "product";
     }
 }

@@ -1,10 +1,12 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+
+<%--@elvariable id="model" type="com.github.emilg1101.marketplace.model.HomepageModel"--%>
 
 <t:layout title="Homepage">
 
-    <t:mainLayout>
+    <t:mainLayout id="home" loggedIn="true">
 
         <div class="row">
 
