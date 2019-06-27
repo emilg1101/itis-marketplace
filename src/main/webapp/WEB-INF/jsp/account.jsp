@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%--@elvariable id="model" type="com.github.emilg1101.marketplace.model.AccountModel"--%>
+<%--@elvariable id="model" type="com.github.emilg1101.marketplace.model.account.AccountModel"--%>
 
 <t:layout title="Account" id="account">
 
@@ -14,6 +14,18 @@
                 <div class="card mt-4">
                     <img class="card-img-top" src="http://placehold.it/700x400" alt="Card image cap">
                     <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><b>Name:</b></li>
+                            <li>${model.username}</li>
+                            <li><b>E-mail:</b></li>
+                            <li>${model.email}</li>
+                            <li><b>Orders:</b></li>
+                            <li>${model.orders.size()}</li>
+                            <li><b>Reviews:</b></li>
+                            <li>${model.reviews.size()}</li>
+                            <li><b>Registered at:</b></li>
+                            <li>${model.registeredAt}</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -60,34 +72,50 @@
 
                             </div>
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                Nulla est ullamco ut irure incididunt nulla Lorem Lorem minim irure officia enim
-                                reprehenderit. Magna duis labore cillum sint adipisicing exercitation ipsum. Nostrud ut
-                                anim
-                                non exercitation velit laboris fugiat cupidatat. Commodo esse dolore fugiat sint velit
-                                ullamco magna consequat voluptate minim amet aliquip ipsum aute laboris nisi. Labore
-                                labore
-                                veniam irure irure ipsum pariatur mollit magna in cupidatat dolore magna irure esse
-                                tempor
-                                ad mollit. Dolore commodo nulla minim amet ipsum officia consectetur amet ullamco
-                                voluptate
-                                nisi commodo ea sit eu.
+
+                                <c:if test="${empty model.reviews}">
+                                    <p>No reviews!</p>
+                                </c:if>
+                                <c:if test="${!empty model.reviews}">
+                                    <table class="table table-striped review-table">
+
+                                        <thead>
+                                            <tr class="product-table-title">
+                                                <th>Product</th>
+                                                <th colspan="2">Review</th>
+                                                <th>Review action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <c:forEach var="review" items="${model.reviews}">
+                                            <t:reviewItem model="${review}"/>
+                                        </c:forEach>
+
+                                    </table>
+                                </c:if>
+
                             </div>
                             <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                Sint sit mollit irure quis est nostrud cillum consequat Lorem esse do quis dolor esse
-                                fugiat
-                                sunt do. Eu ex commodo veniam Lorem aliquip laborum occaecat qui Lorem esse mollit
-                                dolore
-                                anim cupidatat. Deserunt officia id Lorem nostrud aute id commodo elit eiusmod enim
-                                irure
-                                amet eiusmod qui reprehenderit nostrud tempor. Fugiat ipsum excepteur in aliqua non et
-                                quis
-                                aliquip ad irure in labore cillum elit enim. Consequat aliquip incididunt ipsum et minim
-                                laborum laborum laborum et cillum labore. Deserunt adipisicing cillum id nulla minim
-                                nostrud
-                                labore eiusmod et amet. Laboris consequat consequat commodo non ut non aliquip
-                                reprehenderit
-                                nulla anim occaecat. Sunt sit ullamco reprehenderit irure ea ullamco Lorem aute nostrud
-                                magna.
+
+                                <div class="row">
+
+                                    <div class="col-6 col-md-12 mb-4">
+                                        <a href="/address/add"><button class="btn btn-primary">Add address</button></a>
+                                    </div>
+
+                                    <c:if test="${empty model.addresses}">
+                                        <div class="col-6 col-md-12 mb-4">
+                                            <p>Empty!</p>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${!empty model.addresses}">
+                                        <c:forEach var="address" items="${model.addresses}">
+                                            <t:addressItem model="${address}"/>
+                                        </c:forEach>
+                                    </c:if>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-.order-table {
+.order-table, .review-table {
     width: 100%;
     table-layout: fixed;
     font-size: 1rem;
@@ -20,35 +20,46 @@
     font: inherit;
 }
 
-.product-table-title th {
-    text-align: left;
+.review-table thead {
+    background-color: #f2f2f2;
+    border-bottom: 2px solid #fff;
 }
 
-.order-item-wrapper {
+.review-table tr {
     margin: 0;
     padding: 0;
     font: inherit;
 }
 
-.order-head {
+.product-table-title th {
+    text-align: left;
+}
+
+.order-item-wrapper, .review-item-wrapper {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+.order-head, .review-head {
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
     font: inherit;
 }
 
-.order-body {
+.order-body, .review-body {
     margin: 0;
     padding: 0;
     font: inherit;
 }
 
-.product-sets, .order-status{
+.product-sets, .order-status {
     border-right: 1px solid #f2f2f2;
     border-bottom: 1px solid #f2f2f2;
 }
 
-.order-action {
+.order-action, .review-action {
     border-bottom: 1px solid #f2f2f2;
 }
 
@@ -69,4 +80,23 @@
 
 .product-left img {
     width: 60px;
+}
+
+.review-body .product-right {
+    width: 100px;
+    word-wrap: break-word;
+}
+
+.review-body .product-left {
+    width: 60px;
+}
+
+.review-body .product-left img {
+    width: 40px;
+}
+
+.address-item {
+    border: 2px solid #ddd;
+    overflow: hidden;
+    padding: 25px 10px 20px 20px;
 }

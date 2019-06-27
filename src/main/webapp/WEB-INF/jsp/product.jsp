@@ -28,8 +28,7 @@
                         <h3 class="card-title">${model.title}</h3>
                         <h4>$${model.price}</h4>
                         <p class="card-text">${model.description}</p>
-                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                        4.0 stars
+                        <a href="<c:url value="/order?product_id=${model.id}"/>"><button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</button></a>
                     </div>
                 </div>
                 <!-- /.card -->

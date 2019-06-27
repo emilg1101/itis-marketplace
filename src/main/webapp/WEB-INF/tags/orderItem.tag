@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="t" uri="http://www.springframework.org/tags/form" %>
 
-<%@attribute name="order" required="true" type="com.github.emilg1101.marketplace.model.OrderItemModel" %>
+<%@attribute name="order" required="true" type="com.github.emilg1101.marketplace.model.account.OrderItemModel" %>
 
 <tbody class="order-item-wrapper">
     <tr class="order-head">

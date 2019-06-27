@@ -9,14 +9,13 @@
         <a href="<c:url value="/product?id=${product.id}"/>"><img class="card-img-top" src="${product.imageURL}" alt=""></a>
         <div class="card-body">
             <h4 class="card-title">
-                <a href="#">${product.title}</a>
+                <a href="<c:url value="/product?id=${product.id}"/>">${product.title}</a>
             </h4>
             <h5>$${product.price}</h5>
             <p class="card-text">${product.description}</p>
         </div>
         <div class="card-footer">
-            <%--<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>--%>
-                <button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</button>
+            <a href="<c:url value="/order?product_id=${product.id}"/>"><button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</button></a>
         </div>
     </div>
 </div>
