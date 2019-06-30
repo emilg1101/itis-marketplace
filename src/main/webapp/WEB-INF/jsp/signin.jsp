@@ -9,12 +9,18 @@
 
         <div class="login-form">
 
-            <form:form method="POST" modelAttribute="loginForm">
+            <%--@elvariable id="signinForm" type="com.github.emilg1101.marketplace.model.form.SigninForm"--%>
+            <form:form method="POST" modelAttribute="signinForm">
 
                 <h2>Log in</h2>
                 <hr>
-                <t:input id="email" type="text" placeholder="E-mail"/>
-                <t:input id="password" type="password" placeholder="Password"/>
+
+                <c:if test="${not empty error}">
+                    <p>${error}</p>
+                </c:if>
+
+                <t:input id="email" type="text" placeholder="E-mail" val="${signinForm.email}"/>
+                <t:input id="password" type="password" placeholder="Password" val="${signinForm.password}"/>
                 <div class="clearfix">
                     <label class="pull-left checkbox-inline">
                         <input type="checkbox" name="remember" id="remember">Remember me

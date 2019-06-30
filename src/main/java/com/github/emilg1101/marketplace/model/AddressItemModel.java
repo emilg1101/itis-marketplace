@@ -1,4 +1,4 @@
-package com.github.emilg1101.marketplace.model.account;
+package com.github.emilg1101.marketplace.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

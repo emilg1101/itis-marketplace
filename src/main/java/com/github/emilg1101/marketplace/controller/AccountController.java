@@ -1,7 +1,7 @@
 package com.github.emilg1101.marketplace.controller;
 
 import com.github.emilg1101.marketplace.model.account.AccountModel;
-import com.github.emilg1101.marketplace.model.account.AddressItemModel;
+import com.github.emilg1101.marketplace.model.AddressItemModel;
 import com.github.emilg1101.marketplace.model.account.OrderItemModel;
 import com.github.emilg1101.marketplace.model.account.ReviewItemModel;
 import org.springframework.stereotype.Controller;

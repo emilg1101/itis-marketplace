@@ -2,7 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@attribute name="model" required="true" type="com.github.emilg1101.marketplace.model.account.AddressItemModel" %>
+<%@attribute name="model" required="true" type="com.github.emilg1101.marketplace.model.AddressItemModel" %>
 
 <div class="col-6 col-md-4 mb-4">
     <div class="address-item">
