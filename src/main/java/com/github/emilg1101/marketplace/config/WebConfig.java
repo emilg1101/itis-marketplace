@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @ComponentScan("com.github.emilg1101.marketplace")
-@Import({ViewResolverConfig.class})
+@Import({ViewResolverConfig.class, RootConfig.class})
 @EnableWebMvc
 public class WebConfig implements WebMvcConfigurer {
 
