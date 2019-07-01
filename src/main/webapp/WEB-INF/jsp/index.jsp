@@ -6,7 +6,7 @@
 
 <t:layout title="Homepage">
 
-    <t:mainLayout id="home" loggedIn="true">
+    <t:mainLayout id="home" loggedIn="${model.loggedIn}">
 
         <div class="row">
 

@@ -8,5 +8,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class HomepageModel {
+    boolean loggedIn;
     List<ProductItemModel> products;
 }

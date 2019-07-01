@@ -6,7 +6,7 @@
 
 <t:layout title="${model.title}">
 
-    <t:mainLayout loggedIn="true">
+    <t:mainLayout loggedIn="${model.loggedIn}">
 
         <div class="row">
 
@@ -28,7 +28,9 @@
                         <h3 class="card-title">${model.title}</h3>
                         <h4>$${model.price}</h4>
                         <p class="card-text">${model.description}</p>
-                        <a href="<c:url value="/order?product_id=${model.id}"/>"><button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</button></a>
+                        <a href="<c:url value="/order?product_id=${model.id}"/>">
+                            <button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</button>
+                        </a>
                     </div>
                 </div>
                 <!-- /.card -->

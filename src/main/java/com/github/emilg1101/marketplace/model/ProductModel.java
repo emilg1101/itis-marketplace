@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ProductModel {
+    boolean loggedIn;
     long id;
     String imageURL;
     String title;
