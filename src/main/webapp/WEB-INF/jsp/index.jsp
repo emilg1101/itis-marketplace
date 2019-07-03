@@ -54,7 +54,7 @@
                 <div class="row">
 
                     <c:forEach var="product" items="${model.products}">
-                        <t:productItem product="${product}"/>
+                        <t:productItem product="${product}" loggedIn="${model.loggedIn}"/>
                     </c:forEach>
 
                 </div>

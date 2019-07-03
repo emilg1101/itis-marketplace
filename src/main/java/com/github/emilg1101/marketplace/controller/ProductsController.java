@@ -9,8 +9,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,9 +34,10 @@ public class ProductsController {
     }
 
     @GetMapping(path = "/product")
-    public String product(ModelMap modelMap, UsernamePasswordAuthenticationToken principal) {
-        ProductModel productModel = new ProductModel(principal != null, 0L, "http://placehold.it/700x400", "title 1", "description 1", 99.99);
-        modelMap.addAttribute("model", productModel);
+    public String product(@RequestParam("id") long productId, ModelMap modelMap, UsernamePasswordAuthenticationToken principal) {
+        ProductModel model = ProductModel.map(productService.getProduct(productId));
+        model.setLoggedIn(principal != null);
+        modelMap.addAttribute("model", model);
         return "product";
     }
 }

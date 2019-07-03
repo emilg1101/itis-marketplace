@@ -28,9 +28,11 @@
                         <h3 class="card-title">${model.title}</h3>
                         <h4>$${model.price}</h4>
                         <p class="card-text">${model.description}</p>
-                        <a href="<c:url value="/order?product_id=${model.id}"/>">
-                            <button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</button>
-                        </a>
+                        <c:if test="${model.loggedIn}">
+                            <a href="<c:url value="/order?product_id=${model.id}"/>">
+                                <button class="btn"><span class="glyphicon glyphicon-shopping-cart"></span> Buy</button>
+                            </a>
+                        </c:if>
                     </div>
                 </div>
                 <!-- /.card -->
