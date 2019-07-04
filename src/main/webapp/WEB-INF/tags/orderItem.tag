@@ -30,7 +30,9 @@
                 <img src="${order.productImageURL}" alt="">
             </div>
             <div class="product-right">
-                <a href="<c:url value="/product?id=${order.productId}"/>"><p>${order.productTitle}</p></a>
+                <a href="<c:url value="/product?id=${order.productId}"/>">
+                    <p>${order.productTitle}</p>
+                </a>
                 <p>${order.productPrice}$ x ${order.productQuantity}</p>
             </div>
         </td>
@@ -38,7 +40,11 @@
             <p>${order.status}</p>
         </td>
         <td class="order-action">
-            <button class="btn btn-danger">Cancel</button>
+            <c:if test="${order.status != 'canceled'}">
+                <a href="<c:url value="/order/cancel?id=${order.id}"/>">
+                    <button class="btn btn-danger">Cancel</button>
+                </a>
+            </c:if>
         </td>
     </tr>
 </tbody>

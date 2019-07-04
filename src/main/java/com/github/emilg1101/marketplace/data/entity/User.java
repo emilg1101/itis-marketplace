@@ -30,6 +30,8 @@ public class User implements UserDetails {
     @Column(name = "reg_date")
     private Date regDate;
     @OneToMany(mappedBy = "user")
+    private List<Order> orders;
+    @OneToMany(mappedBy = "user")
     private List<Address> addresses;
 
     @Override

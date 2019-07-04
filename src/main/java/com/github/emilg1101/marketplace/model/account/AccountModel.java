@@ -28,7 +28,7 @@ public class AccountModel {
         model.username = user.getName();
         model.email = user.getEmail();
         model.registeredAt = ft.format(user.getRegDate());
-        model.orders = new ArrayList<>();
+        model.orders = user.getOrders().stream().map(OrderItemModel::map).collect(Collectors.toList());
         model.reviews = new ArrayList<>();
         model.addresses = user.getAddresses().stream().map(AddressItemModel::map).collect(Collectors.toList());
         return model;
