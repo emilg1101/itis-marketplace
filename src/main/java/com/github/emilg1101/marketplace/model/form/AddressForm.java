@@ -1,12 +1,17 @@
 package com.github.emilg1101.marketplace.model.form;
 
+import com.github.emilg1101.marketplace.data.entity.Address;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Size;
 
 @Data
+@Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class AddressForm {
     Long id;
@@ -27,4 +32,18 @@ public class AddressForm {
     String zip;
     @Size(min = 11, max = 18, message = "Please enter Phone between 11 - 18 characters")
     String phone;
+
+    public static AddressForm map(Address address) {
+        return AddressForm.builder()
+                .id(address.getId())
+                .name(address.getContactName())
+                .country(address.getCountry())
+                .address(address.getStreetAddressOne())
+                .address2(address.getStreetAddressTwo())
+                .state(address.getState())
+                .city(address.getCity())
+                .zip(address.getZip())
+                .phone(address.getMobile())
+                .build();
+    }
 }

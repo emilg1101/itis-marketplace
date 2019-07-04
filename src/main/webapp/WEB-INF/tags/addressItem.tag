@@ -17,6 +17,6 @@
             </ul>
         </div>
         <i class="fa fa-phone"></i>${model.mobile}
-        <span><a href="<c:url value="/address/edit?id=${model.id}"/>">Edit</a> | <a href="/">Delete</a></span>
+        <span><a href="<c:url value="/address/edit?id=${model.id}"/>">Edit</a> | <a href="<c:url value="/address/delete?id=${model.id}"/>">Delete</a></span>
     </div>
 </div>

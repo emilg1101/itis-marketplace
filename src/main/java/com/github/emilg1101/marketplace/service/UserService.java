@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.sql.Date;
 import java.time.Instant;
 import java.util.Optional;
@@ -48,5 +49,13 @@ public class UserService {
                 .regDate(Date.from(Instant.now()))
                 .build();
         return userRepository.save(user);
+    }
+
+    public User get(long userId) {
+        Optional<User> userCandidate = userRepository.findById(userId);
+        if (userCandidate.isPresent()) {
+            return userCandidate.get();
+        }
+        throw new EntityNotFoundException();
     }
 }

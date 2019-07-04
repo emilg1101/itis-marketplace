@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -22,12 +23,14 @@ import java.util.Date;
 public class User implements UserDetails {
     @Id
     @GeneratedValue
-    private Long id;
+    Long id;
     private String email;
     private String password;
     private String name;
     @Column(name = "reg_date")
     private Date regDate;
+    @OneToMany(mappedBy = "user")
+    private List<Address> addresses;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

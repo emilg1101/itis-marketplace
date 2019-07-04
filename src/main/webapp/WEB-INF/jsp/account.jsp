@@ -3,6 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%--@elvariable id="model" type="com.github.emilg1101.marketplace.model.account.AccountModel"--%>
+<%--@elvariable id="tab" type="java.lang.String"--%>
 
 <t:layout title="Account" id="account">
 
@@ -35,19 +36,19 @@
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true">Orders</a>
+                                <a class="nav-link <c:if test="${tab == 'orders'}">active</c:if>" id="home-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="true">Orders</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
+                                <a class="nav-link <c:if test="${tab == 'reviews'}">active</c:if>" id="profile-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="false">Address</a>
+                                <a class="nav-link <c:if test="${tab == 'address'}">active</c:if>" id="contact-tab" data-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="false">Address</a>
                             </li>
                         </ul>
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <div class="tab-pane fade <c:if test="${tab == 'orders'}">show active</c:if>" id="orders" role="tabpanel" aria-labelledby="nav-home-tab">
 
                                 <c:if test="${empty model.orders}">
                                     <p>No orders!</p>
@@ -71,7 +72,7 @@
                                 </c:if>
 
                             </div>
-                            <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="tab-pane fade <c:if test="${tab == 'reviews'}">show active</c:if>" id="reviews" role="tabpanel" aria-labelledby="nav-profile-tab">
 
                                 <c:if test="${empty model.reviews}">
                                     <p>No reviews!</p>
@@ -95,7 +96,7 @@
                                 </c:if>
 
                             </div>
-                            <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="tab-pane fade <c:if test="${tab == 'address'}">show active</c:if>" id="address" role="tabpanel" aria-labelledby="nav-contact-tab">
 
                                 <div class="row">
 
