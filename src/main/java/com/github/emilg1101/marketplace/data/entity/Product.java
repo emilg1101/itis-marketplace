@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -27,4 +28,6 @@ public class Product {
     private String description;
     private String imageURL;
     private Double price;
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
 }

@@ -1,4 +1,4 @@
-package com.github.emilg1101.marketplace.model.account;
+package com.github.emilg1101.marketplace.model;
 
 import com.github.emilg1101.marketplace.data.entity.Review;
 import lombok.AllArgsConstructor;
@@ -13,22 +13,16 @@ import java.text.SimpleDateFormat;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReviewItemModel {
-    long id;
     String text;
     String reviewTime;
-    long productId;
-    String productImageURL;
-    String productTitle;
+    String author;
 
     public static ReviewItemModel map(Review review) {
-        SimpleDateFormat ft = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd 'at' hh:mm");
         return ReviewItemModel.builder()
-                .id(review.getId())
                 .text(review.getText())
                 .reviewTime(ft.format(review.getReviewTime()))
-                .productId(review.getProduct().getId())
-                .productImageURL(review.getProduct().getImageURL())
-                .productTitle(review.getProduct().getTitle())
+                .author(review.getUser().getName())
                 .build();
     }
 }

@@ -32,6 +32,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
     @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
+    @OneToMany(mappedBy = "user")
     private List<Address> addresses;
 
     @Override

@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,6 +20,7 @@ public class ProductModel {
     String title;
     String description;
     double price;
+    private List<ReviewItemModel> reviews;
 
     public static ProductModel map(Product product) {
         return ProductModel.builder()
@@ -25,6 +29,7 @@ public class ProductModel {
                 .title(product.getTitle())
                 .description(product.getDescription())
                 .price(product.getPrice())
+                .reviews(product.getReviews().stream().map(ReviewItemModel::map).collect(Collectors.toList()))
                 .build();
     }
 }

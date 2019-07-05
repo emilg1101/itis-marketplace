@@ -1,5 +1,6 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <%--@elvariable id="model" type="com.github.emilg1101.marketplace.model.ProductModel"--%>
@@ -42,13 +43,36 @@
                         Product Reviews
                     </div>
                     <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore,
-                            similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat
-                            laborum. Sequi mollitia, necessitatibus quae sint natus.
-                        </p>
-                        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
-                        <hr>
-                        <a href="#" class="btn btn-success">Leave a Review</a>
+                        <c:if test="${empty model.reviews}">
+                            <p>No reviews!</p>
+                        </c:if>
+                        <c:if test="${!empty model.reviews}">
+
+                            <c:forEach var="review" items="${model.reviews}">
+                                <t:reviewProductItem model="${review}"/>
+                            </c:forEach>
+
+                        </c:if>
+
+                        <c:if test="${model.loggedIn}">
+                            <%--@elvariable id="reviewForm" type="com.github.emilg1101.marketplace.model.form.ReviewForm"--%>
+                            <form:form method="post" modelAttribute="reviewForm" action="/review/add">
+
+                                <div class="form-row">
+
+                                    <input type="hidden" name="productId" value="${model.id}">
+                                    <div class="col-7">
+                                        <input type="text" class="form-control" id="text" name="text" placeholder="Review">
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-success">Leave a Review</button>
+                                    </div>
+
+                                </div>
+
+                            </form:form>
+
+                        </c:if>
                     </div>
                 </div>
                 <!-- /.card -->

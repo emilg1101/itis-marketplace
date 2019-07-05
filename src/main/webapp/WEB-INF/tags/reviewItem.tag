@@ -19,14 +19,18 @@
                 <img src="${model.productImageURL}" alt="">
             </div>
             <div class="product-right">
-                <a href="<c:url value="/product?id=${model.productId}"/>"><p>${model.productTitle}</p></a>
+                <a href="<c:url value="/product?id=${model.productId}"/>">
+                    <p>${model.productTitle}</p>
+                </a>
             </div>
         </td>
         <td colspan="2">
             <p>${model.text}</p>
         </td>
         <td class="review-action">
-            <button class="btn btn-danger">Delete</button>
+            <a href="<c:url value="/review/delete?id=${model.id}"/>">
+                <button class="btn btn-danger">Delete</button>
+            </a>
         </td>
     </tr>
 </tbody>

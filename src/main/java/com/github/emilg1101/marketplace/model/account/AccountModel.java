@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +28,7 @@ public class AccountModel {
         model.email = user.getEmail();
         model.registeredAt = ft.format(user.getRegDate());
         model.orders = user.getOrders().stream().map(OrderItemModel::map).collect(Collectors.toList());
-        model.reviews = new ArrayList<>();
+        model.reviews = user.getReviews().stream().map(ReviewItemModel::map).collect(Collectors.toList());
         model.addresses = user.getAddresses().stream().map(AddressItemModel::map).collect(Collectors.toList());
         return model;
     }
