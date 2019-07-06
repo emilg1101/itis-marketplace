@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -37,7 +38,7 @@ public class AddressController {
             return "address";
         }
         addressService.add(form, ((User) principal.getPrincipal()));
-        return "redirect:/account?tab=address";
+        return "redirect:" + MvcUriComponentsBuilder.fromMappingName("AC#account").arg(0, "address").build();
     }
 
     @GetMapping(path = "/address/edit")
@@ -57,12 +58,12 @@ public class AddressController {
             return "address";
         }
         addressService.update(form, (User) principal.getPrincipal());
-        return "redirect:/account?tab=address";
+        return "redirect:" + MvcUriComponentsBuilder.fromMappingName("AC#account").arg(0, "address").build();
     }
 
     @GetMapping(path = "/address/delete")
     public String delete(@RequestParam("id") long addressId, UsernamePasswordAuthenticationToken principal) {
         addressService.delete(addressId, (User) principal.getPrincipal());
-        return "redirect:/account?tab=address";
+        return "redirect:" + MvcUriComponentsBuilder.fromMappingName("AC#account").arg(0, "address").build();
     }
 }

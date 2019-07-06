@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -52,6 +53,6 @@ public class OrderController {
     @GetMapping(path = "/order/cancel")
     public String cancel(@RequestParam("id") long orderId, UsernamePasswordAuthenticationToken principal) {
         orderService.cancel(orderId, (User) principal.getPrincipal());
-        return "redirect:/account?tab=orders";
+        return "redirect:" + MvcUriComponentsBuilder.fromMappingName("AC#account").arg(0, "orders").build();
     }
 }
