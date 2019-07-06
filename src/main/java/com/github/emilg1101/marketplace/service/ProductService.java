@@ -5,7 +5,9 @@ import com.github.emilg1101.marketplace.data.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -18,6 +20,10 @@ public class ProductService {
     }
 
     public Product getProduct(long id) {
-        return productRepository.getOne(id);
+        Optional<Product> productCandidate = productRepository.findById(id);
+        if (productCandidate.isPresent()) {
+            return productCandidate.get();
+        }
+        throw new EntityNotFoundException();
     }
 }
