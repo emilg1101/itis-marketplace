@@ -22,13 +22,8 @@ public class ProductsController {
 
     @GetMapping(path = "/")
     public String products(ModelMap modelMap, UsernamePasswordAuthenticationToken principal) {
-        HomepageModel homepageModel = new HomepageModel();
+        HomepageModel homepageModel = HomepageModel.map(productService.getProducts());
         homepageModel.setLoggedIn(principal != null);
-        List<ProductItemModel> productItemModelList = productService.getProducts()
-                .stream()
-                .map(ProductItemModel::map)
-                .collect(Collectors.toList());
-        homepageModel.setProducts(productItemModelList);
         modelMap.addAttribute("model", homepageModel);
         return "index";
     }
