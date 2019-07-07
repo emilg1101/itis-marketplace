@@ -13,7 +13,7 @@
 
             <div class="col-6 col-md-3 mb-4">
                 <div class="card mt-4">
-                    <img class="card-img-top" src="http://placehold.it/700x400" alt="Card image cap">
+                    <img class="card-img-top" src="/img/profile.png" alt="Card image cap">
                     <div class="card-body">
                         <ul class="list-unstyled">
                             <li><b>Name:</b></li>
